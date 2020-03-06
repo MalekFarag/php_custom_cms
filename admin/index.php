@@ -2,6 +2,16 @@
     require_once '../load.php';
     confirm_logged_in();
     comfirm_verified();
+
+    if (isset($_GET['filter'])) {
+        //Filter is not working
+        $category = array(
+            'running'=>'running'
+        );
+        $getProds = $prod->getProdsByCategory($category);
+    } else {
+        $getProds = $prod->getProds();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +33,15 @@
 
     <h3>Products</h3>
     <!-- render product list here -->
+    <?php while ($row = $getProds->fetch(PDO::FETCH_ASSOC)): ?>
+        <a href="prodDetails.php?id=<?php echo $row['id']; ?>">
+        <div class="prodItem">
+            <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" />
+            <h5><?php echo $row['price']; ?></h5>
+            <h2><?php echo $row['name']; ?></h2>
+        </div>
+        </a>
+    <?php endwhile; ?>
     
 </body>
 </html>
