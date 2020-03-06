@@ -4,7 +4,7 @@ class Database
     // Note: specify your own database credentials
     private $host = "localhost";
 
-    private $db_name = "db_sportcheck_cms";
+    private $db_name = "db_sportchek_cms";
 
     private $username = "root";
 
