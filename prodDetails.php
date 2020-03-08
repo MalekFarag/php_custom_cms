@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     <?php include 'templates/header.php';?>
     <?php if (!is_string($getProd)): ?>
         <?php while ($row = $getProd->fetch(PDO::FETCH_ASSOC)): ?>
-            <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['movies_title'] ?>" />
+            <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['name'] ?>" />
 
             <p>#<?php echo $row['prod_number']; ?></p>
             <h2>Name: <?php echo $row['name']; ?></h2>
