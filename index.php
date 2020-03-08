@@ -4,12 +4,19 @@ require_once 'load.php';
 
 if (isset($_GET['filter'])) {
     //Filter is not working
-    $category = array(
-        'running'=>'running'
+    $args = array(
+        'tbl' => 'tbl_products',
+        'tbl2' => 'tbl_category',
+        'tbl3' => 'tbl_prod_category',
+        'col' => 'prod_id',
+        'col2' => 'category_id',
+        'col3' => 'category_name',
+        'filter' => $_GET['filter'],
     );
-    $getProds = $prod->getProdsByCategory($category);
+    $getProds = getProdsByCategory($args);
 } else {
-    $getProds = $prod->getProds();
+    $prod_table = 'tbl_products';
+    $getProds = getAll($prod_table);
 }
 
 
@@ -28,10 +35,12 @@ if (isset($_GET['filter'])) {
 
     <h1>Welcome to SportCheck CMS</h1>
 
+    <!-- NEED SEARCH BAR -->
+
     <?php while ($row = $getProds->fetch(PDO::FETCH_ASSOC)): ?>
-        <a href="prodDetails.php?id=<?php echo $row['id']; ?>">
+        <a href="prodDetails.php?id=<?php echo $row['prod_id']; ?>">
         <div class="prodItem">
-            <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" />
+            <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" />
             <h5><?php echo $row['price']; ?></h5>
             <h2><?php echo $row['name']; ?></h2>
         </div>
