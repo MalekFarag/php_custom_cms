@@ -57,7 +57,7 @@
         <!-- link to edit product** PAGE NEEDS UPDATING -->
         <a href="admin_editproduct.php?id=<?php echo $row['prod_id']; ?>">Edit Product</a>
         <!-- link to delete product** NEEDS NEW PAGE -->
-        <a href="admin_deleteproduct.php?id=<?php echo $row['prod_id']; ?>">Edit Product</a>
+        <a href="admin_deleteproduct.php?id=<?php echo $row['prod_id']; ?>">Delete Product</a>
     <?php endwhile; ?>
     
 </body>

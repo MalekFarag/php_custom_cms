@@ -2,23 +2,21 @@
     require_once '../load.php';
     confirm_logged_in();
 
-    //able to update and delete products
-    //todo: display list of products, on click bring them to another page where they can update/delete product
-
-    $id = $_SESSION['user_id'];
-    $user = getSingleUser($id);
-
-    if(is_string($user)){
-        $message = $user;
+    //grab the individual product
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $tbl = 'tbl_products';
+        $col = 'prod_id';
+        $getProd = getSingleProd($tbl, $col, $id);
     }
 
+    // submitting inputted values
     if(isset($_POST['submit'])){
-        $fname = trim($_POST['fname']);
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
-        $email = trim($_POST['email']);
+        $name = trim($_POST['name']);
+        $price = trim($_POST['price']);
+        $description = trim($_POST['description']);
 
-        $message = editUser($id, $fname, $username, $password, $email);
+        $message = editProduct($id, $name, $price, $description);
     }
 ?>
 <!DOCTYPE html>
@@ -26,27 +24,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User</title>
+    <title>Edit Product</title>
 </head>
 <body>
-    <h2>Edit User</h2>
-    <p>If this is your first time logging in, please update your password or any other detail to verify your account and gain access to the rest of the site.</p>
-    <?php echo !empty($message)? $message : '';?>
-    <form action="admin_edituser.php" method="post">
-        <?php while($info = $user->fetch(PDO::FETCH_ASSOC)): ?>
-            <label>First Name:</label><br>
-            <input type="text" name="fname" value="<?php echo $info['first_name'];?>"><br><br>
 
-            <label>Username:</label><br>
-            <input type="text" name="username" value="<?php echo $info['user_name'];?>"><br><br>
+<h1>Edit Product</h1>
 
-            <label>Password:</label><br>
-            <input type="text" name="password" value="<?php echo $info['user_password'];?>"><br><br>
+<?php echo !empty($message)? $message : '';?>
+    <form action="admin_editproduct.php?id=<?php echo $id ; ?>" method="post">
+        <?php while($info = $getProd->fetch(PDO::FETCH_ASSOC)): ?>
 
-            <label>Email:</label><br>
-            <input type="text" name="email" value="<?php echo $info['user_email'];?>"><br><br>
+            <label>Product Name:</label><br>
+            <input type="text" name="name" value="<?php echo $info['name'];?>"><br><br>
+
+            <label>Price:</label><br>
+            <input type="text" name="price" value="<?php echo $info['price'];?>"><br><br>
+
+            <label>Description:</label><br>
+            <textarea type="text" name="description"><?php echo $info['description'];?></textarea> <br><br>
+            <!-- add image? -->
         <?php endwhile;?>
-        <button type="submit" name="submit">Edit User</button>
+        <button type="submit" name="submit">Edit Product</button>
     </form>
+
+    <a href="index.php">Back Home...</a>
+
 </body>
 </html>
