@@ -16,6 +16,9 @@ function login($username, $password, $ip){
     );
 
     if($user_set->fetchColumn()>0){
+        //encrypting password
+        $passwordEncryp = md5($password);
+
         //user exist
         $get_user_query = 'SELECT * FROM tbl_user WHERE user_name = :username';
         $get_user_query .= ' AND user_password = :password';
@@ -23,7 +26,7 @@ function login($username, $password, $ip){
         $user_check->execute(
             array(
                 ':username'=>$username,
-                ':password'=>$password
+                ':password'=>$passwordEncryp
             )
         );
     while($found_user = $user_check->fetch(PDO::FETCH_ASSOC)){
@@ -66,7 +69,7 @@ function logout(){
     redirect_to('admin_login.php');
 }
 
-function comfirm_verified(){
+function confirm_verified(){
     $pdo = Database::getInstance()->getConnection();
         //getting user virification status
             $user_verify_query = 'SELECT * FROM tbl_user WHERE user_id = :id';

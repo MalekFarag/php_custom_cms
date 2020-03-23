@@ -40,7 +40,7 @@ if ($num > 0) {
 } else {
     echo json_encode(
         array(
-            "message" => "No movies found.",
+            "message" => "No products found.",
         )
     );
 }

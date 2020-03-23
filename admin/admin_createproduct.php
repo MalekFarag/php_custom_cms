@@ -1,7 +1,7 @@
 <?php 
 require_once '../load.php';
 confirm_logged_in();
-comfirm_verified();
+confirm_verified();
 
 $category_tbl = 'tbl_category';
 $categories = getAll($category_tbl);

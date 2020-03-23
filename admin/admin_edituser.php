@@ -10,12 +10,19 @@
     }
 
     if(isset($_POST['submit'])){
+        
         $fname = trim($_POST['fname']);
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         $email = trim($_POST['email']);
 
-        $message = editUser($id, $fname, $username, $password, $email);
+        if(empty($password)){
+            $message = editUser2($id, $fname, $username, $email);
+        }else{
+            $message = editUser($id, $fname, $username, $password, $email);
+        }
+
+        
     }
 ?>
 <!DOCTYPE html>
@@ -37,8 +44,9 @@
             <label>Username:</label><br>
             <input type="text" name="username" value="<?php echo $info['user_name'];?>"><br><br>
 
-            <label>Password:</label><br>
-            <input type="text" name="password" value="<?php echo $info['user_password'];?>"><br><br>
+            
+            <label>Password:*leave blank to keep current password</label><br>
+            <input type="text" name="password"><br><br>
 
             <label>Email:</label><br>
             <input type="text" name="email" value="<?php echo $info['user_email'];?>"><br><br>

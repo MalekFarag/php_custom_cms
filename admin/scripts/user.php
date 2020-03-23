@@ -1,7 +1,7 @@
 <?php
 
 
-function createuser($fname, $username, $email){
+function createuser($fname, $username, $password, $email){
     
     $pdo = Database::getInstance()->getConnection();
 
@@ -19,8 +19,6 @@ function createuser($fname, $username, $email){
      if($row['num'] > 0){
         $message = 'username is already registered';
     }else{
-        //creating password for user
-        $password = md5(rand(0,1000)); 
 
         //phpmailer config
         $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -62,6 +60,8 @@ function createuser($fname, $username, $email){
             $message= $mail->ErrorInfo;
             return 'user creation did not got through';
         }else{
+            $passwordEncryp = md5($password);
+
             //creating user sql query from form details
             $create_user_query = "INSERT INTO tbl_user (user_id, first_name, user_name, user_email, user_password, verified, user_ip) VALUES (NULL, :fname, :username, :email, :password, '0', 'no');";
 
@@ -71,7 +71,7 @@ function createuser($fname, $username, $email){
                     ':fname'=>$fname,
                     ':username'=>$username,
                     ':email'=>$email,
-                    ':password'=>$password
+                    ':password'=>$passwordEncryp
                 )
             );
             
@@ -103,6 +103,9 @@ function getSingleUser($id){
 }
 
 function editUser($id, $fname, $username, $password, $email){
+
+    $passwordEncryp = md5($password);
+
     //TODO: set up database connection
     $pdo = Database::getInstance()->getConnection();
 
@@ -113,7 +116,36 @@ function editUser($id, $fname, $username, $password, $email){
         array(
             ':fname'=>$fname,
             ':username'=>$username,
-            ':password'=>$password,
+            ':password'=>$passwordEncryp,
+            ':email'=>$email,
+            ':id'=>$id
+        )
+    );
+
+    // echo $update_user_set->debugDumpParams();
+    // exit;
+
+    //TODO: if everything goes well, redirect user to index.php
+    // Otherwise, return some error message...
+    if($update_user_result){
+        redirect_to('index.php');
+    }else{
+        return 'Guess you got canned...';
+    }
+}
+
+function editUser2($id, $fname, $username, $email){
+
+    //TODO: set up database connection
+    $pdo = Database::getInstance()->getConnection();
+
+    //TODO: Run the proper SQL query to update tbl_user with proper values
+    $update_user_query = 'UPDATE tbl_user SET first_name = :fname, user_name = :username, verified = 1, user_email =:email WHERE user_id = :id';
+    $update_user_set = $pdo->prepare($update_user_query);
+    $update_user_result = $update_user_set->execute(
+        array(
+            ':fname'=>$fname,
+            ':username'=>$username,
             ':email'=>$email,
             ':id'=>$id
         )

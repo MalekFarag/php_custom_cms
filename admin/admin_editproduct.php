@@ -1,6 +1,7 @@
 <?php 
     require_once '../load.php';
     confirm_logged_in();
+    confirm_verified();
 
     //grab the individual product
     if (isset($_GET['id'])) {

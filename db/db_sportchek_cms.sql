@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 08, 2020 at 02:07 AM
--- Server version: 5.7.26
--- PHP Version: 7.2.18
+-- Generation Time: Mar 23, 2020 at 08:12 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,8 +45,8 @@ INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
 (3, 'soccer'),
 (4, 'skate'),
 (5, 'golf'),
-(6, 'sneaker'),
-(7, 'sandals');
+(6, 'sandals'),
+(7, 'sneaker');
 
 -- --------------------------------------------------------
 
@@ -96,16 +96,16 @@ INSERT INTO `tbl_products` (`prod_id`, `prod_number`, `image`, `name`, `descript
 (23, 332961532, 'adidas_adicross_bounce.pg', 'adidas Men’s adicross Bounce 2 Shoes - White', 'Transition from the course to the street in style in these men’s golf shoes. They feature ultra-soft Cloud- foam cushioning with a Bounce midsole for all-day comfort on every step. A custom lacing system offers locked-in support on and off the links.', '$170.00', '5'),
 (24, 332961614, 'adidas_forgefiber_boa.jpg', 'adidas Men’s Forgefiber Boa Shoes - White', 'These men’s golf shoes are built for lightweight stability on the links. They feature a weather-resistant stretch upper with an innovative Boa® Clo- sure System for comfort and a cus- tom fit. A Boost midsole gives you responsive cushioning, while Climas- torm provides breathable protection in wet conditions.', '$200.00', '5'),
 (25, 333053489, 'puma_grip_fusion.jpg', 'Puma Grip Fusion Sport 2.0 White', 'inspired by the adult’s Grip Fusion Sport, the Grip Fusion Sport 2.0 JR boasts an extremely comfortable fit, r and sporty midsole that will keep you cool and comfortable all-day long.\r\nit’s a must have for both parents and children.', '$109.99', '5'),
-(26, 333046779, 'nike_air_max_slides.jpg', 'Nike Men’s Air Max 90 Slide Sandals', 'The Nike Air Max 90 Slide honors the legendary shoe that shook up the sneaker scene 30 years ago. The visible Max Air unit in the heel cele- brates its strong heritage, while color- ful stitched in TPU elements add retro styling. The foam footbed and plush strap lining offer comfort and support. An embroidered Swoosh and pre- mium materials elevate this slide into a category all its own. After 30 years of stardom, the legend of Air Max continues to build and bridge new worlds.', '$94.00', '7'),
-(27, 333020357, 'nike_benassi_slides.jpg', 'Nike Men’s Benassi “Just Do It” Slide Sandals', 'The Nike Benassi JDI Slide is light- weight and sporty. It features the Nike logo on the foot strap, which is lined in soft fabric. Its foam midsole adds spring to your kicked-back style.', '$29.99', '7'),
-(28, 333017433, 'under_armour_ignite_slides.jpg', 'Under Armour Men’s Ignite VI Slide Sandals', 'The Under Armour Men’s Ignite VI Slide Sandals have an adjustable synthetic strap with soft foam un- derneath for added comfort, and a footbed built with two layers of Perfor- mance 4D Foam® for unprecedent- ed comfort.', '$39.99', '7'),
-(29, 332932783, 'nike_offcourt_slides.jpg', 'Nike Men’s Offcourt Slide Sandals - Black', 'The Nike Men’s Offcourt Slide Sandals is a lightweight sandal with a classic logo embellished on the strap. The innovative foam and jersey lining ensure an effortlessly comfortable experience.', '$41.99', '7'),
-(30, 332995433, 'crocs_classic.jpg', 'Crocs Men’s Classic Clog - Army Green', 'The iconic clog that started a comfort revolution around the world! The irrev- erent, go-to comfort shoe that you’re sure to fall deeper in love with day after day. Crocs Classic Clogs feature lightweight Iconic Crocs ComfortTM,\r\na color for every personality, and offer an ongoing invitation to be comfort- able in your own shoes.', '$34.94', '7'),
-(31, 333068239, 'adidas_nmd.jpg', 'adidas Men’s NMD_R1 Shoes', 'The past inspires the future. These NMD_R1 Shoes combine the best\r\nof adidas’ latest technical innovations with a look that honours the past. Re- sponsive cushioning and a stretchy, sock-like upper give a supremely comfortable feel.', '$170.00', '6'),
-(32, 332999418, 'champion_slippers.jpg', 'Champion Men’s University C Slippers - Oxford Grey/Blue/Red', 'Champion’s University Slippers add\r\na sporty vibe to a walk downtime or anytime. The soft jersey upper, \r\nembroidered logo and fun mini pouch pocket is inspired by Champion’s \r\nfamous fleece hoodie. Slip-on style with an ultra-soft plush lining for warmth, perfect for the winter season.', '$72.99', '6'),
-(33, 333014916, 'converse_ct.jpg', 'Converse Men’s CT All Star Shoes', 'WHERE IT COUNTS. Not so fast. Modeled from our iconic basketball sneaker, The Fastbreak, the Chuck Taylor All Star CS puts comfort front and center with added padding through the tongue and collar. This low top model sports archival inspired details, a faux leather collar, and a clean look.\r\n', '$64.99', '6'),
-(34, 333068264, 'adidas_superstar.jpg', 'adidas Men’s Superstar Shoes', 'Originally made for basketball courts in the ’70s. Celebrated by hip hop royalty in the ’80s. The adidas Super- star shoe is now a lifestyle staple for streetwear enthusiasts. The world-famous shell toe feature remains, providing style and protection. Just like it did on the \r\nB-ball courts back in the day. Now, whether at a festival or walking in the street you can enjoy yourself without the fear of being stepped on. The serrated 3-Stripes detail and adidas Superstar box logo adds OG authenticity to your look.', '$100.00', '6'),
-(35, 333073622, 'puma_replicat_pirelli.jpg', 'PUMA Men’s Replicat X Pirelli v2 Shoes - Black/Puma Red/White', 'The Replicat-X Pirelli takes on the ferocity and form of the modern \r\nracecar while staying true to PUMA’s \r\nauthentic Motorsport DNA. This \r\nupdated version features an outsole directly inspired by the tread pattern of the CinturatoTM Pirelli Blue Wet- one of Pirelli’s highest performing race tires. Incorporating an F1-inspired \r\nperformance outsole that wraps up around the foot for added grip and support, the Replicat-X is as ideal on the track as it is on the street.', '$62.38', '6');
+(26, 333046779, 'nike_air_max_slides.jpg', 'Nike Men’s Air Max 90 Slide Sandals', 'The Nike Air Max 90 Slide honors the legendary shoe that shook up the sneaker scene 30 years ago. The visible Max Air unit in the heel cele- brates its strong heritage, while color- ful stitched in TPU elements add retro styling. The foam footbed and plush strap lining offer comfort and support. An embroidered Swoosh and pre- mium materials elevate this slide into a category all its own. After 30 years of stardom, the legend of Air Max continues to build and bridge new worlds.', '$94.00', '6'),
+(27, 333020357, 'nike_benassi_slides.jpg', 'Nike Men’s Benassi “Just Do It” Slide Sandals', 'The Nike Benassi JDI Slide is light- weight and sporty. It features the Nike logo on the foot strap, which is lined in soft fabric. Its foam midsole adds spring to your kicked-back style.', '$29.99', '6'),
+(28, 333017433, 'under_armour_ignite_slides.jpg', 'Under Armour Men’s Ignite VI Slide Sandals', 'The Under Armour Men’s Ignite VI Slide Sandals have an adjustable synthetic strap with soft foam un- derneath for added comfort, and a footbed built with two layers of Perfor- mance 4D Foam® for unprecedent- ed comfort.', '$39.99', '6'),
+(29, 332932783, 'nike_offcourt_slides.jpg', 'Nike Men’s Offcourt Slide Sandals - Black', 'The Nike Men’s Offcourt Slide Sandals is a lightweight sandal with a classic logo embellished on the strap. The innovative foam and jersey lining ensure an effortlessly comfortable experience.', '$41.99', '6'),
+(30, 332995433, 'crocs_classic.jpg', 'Crocs Men’s Classic Clog - Army Green', 'The iconic clog that started a comfort revolution around the world! The irrev- erent, go-to comfort shoe that you’re sure to fall deeper in love with day after day. Crocs Classic Clogs feature lightweight Iconic Crocs ComfortTM,\r\na color for every personality, and offer an ongoing invitation to be comfort- able in your own shoes.', '$34.94', '6'),
+(31, 333068239, 'adidas_nmd.jpg', 'adidas Men’s NMD_R1 Shoes', 'The past inspires the future. These NMD_R1 Shoes combine the best\r\nof adidas’ latest technical innovations with a look that honours the past. Re- sponsive cushioning and a stretchy, sock-like upper give a supremely comfortable feel.', '$170.00', '7'),
+(32, 332999418, 'champion_slippers.jpg', 'Champion Men’s University C Slippers - Oxford Grey/Blue/Red', 'Champion’s University Slippers add\r\na sporty vibe to a walk downtime or anytime. The soft jersey upper, \r\nembroidered logo and fun mini pouch pocket is inspired by Champion’s \r\nfamous fleece hoodie. Slip-on style with an ultra-soft plush lining for warmth, perfect for the winter season.', '$72.99', '7'),
+(33, 333014916, 'converse_ct.jpg', 'Converse Men’s CT All Star Shoes', 'WHERE IT COUNTS. Not so fast. Modeled from our iconic basketball sneaker, The Fastbreak, the Chuck Taylor All Star CS puts comfort front and center with added padding through the tongue and collar. This low top model sports archival inspired details, a faux leather collar, and a clean look.\r\n', '$64.99', '7'),
+(34, 333068264, 'adidas_superstar.jpg', 'adidas Men’s Superstar Shoes', 'Originally made for basketball courts in the ’70s. Celebrated by hip hop royalty in the ’80s. The adidas Super- star shoe is now a lifestyle staple for streetwear enthusiasts. The world-famous shell toe feature remains, providing style and protection. Just like it did on the \r\nB-ball courts back in the day. Now, whether at a festival or walking in the street you can enjoy yourself without the fear of being stepped on. The serrated 3-Stripes detail and adidas Superstar box logo adds OG authenticity to your look.', '$100.00', '7'),
+(35, 333073622, 'puma_replicat_pirelli.jpg', 'PUMA Men’s Replicat X Pirelli v2 Shoes - Black/Puma Red/White', 'The Replicat-X Pirelli takes on the ferocity and form of the modern \r\nracecar while staying true to PUMA’s \r\nauthentic Motorsport DNA. This \r\nupdated version features an outsole directly inspired by the tread pattern of the CinturatoTM Pirelli Blue Wet- one of Pirelli’s highest performing race tires. Incorporating an F1-inspired \r\nperformance outsole that wraps up around the foot for added grip and support, the Replicat-X is as ideal on the track as it is on the street.', '$62.38', '7');
 
 -- --------------------------------------------------------
 
