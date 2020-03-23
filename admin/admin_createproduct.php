@@ -3,21 +3,24 @@ require_once '../load.php';
 confirm_logged_in();
 comfirm_verified();
 
+$category_tbl = 'tbl_category';
+$categories = getAll($category_tbl);
+
+
 
 if(isset($_POST['submit'])){
-    $name = trim($_POST['name']);
-    $description = trim($_POST['description']);
-    $price = trim($_POST['price']);
-    $category = trim($_POST['category']);
-    $image = trim($_POST['image']);
-    //need file upload (images/shoes/)**** 
+    $product = array(
+        'name'=>$_POST['name'],
+        'description'=>$_POST['description'],
+        'price'=>$_POST['price'],
+        'category'=>$_POST['category'],
+        'image'=>$_FILES['image']
+    );
 
-    if(empty($name) || empty($description) || empty($price) || empty($category) || empty($image)){
-        $message = 'please fill require fields';
-    }else{
-        $message = createProd($name, $description, $price, $category, $image); // add this in helper functions folder
+        $result = createProd($product);
+        $message =  $result;
     }
-}
+
 
 ?>
 
@@ -33,32 +36,32 @@ if(isset($_POST['submit'])){
 <h1>Create Product</h1>
 
 <?php echo !empty($message)? $message: ''; ?>
-<form action="admin_createuser.php" method="post">
+<!-- use enctype multipart/form-data for upload files -->
+<form action="admin_createproduct.php" method="post" enctype='multipart/form-data'>
+    
     <label for="">Name</label><br>
     <input type="text" name='name' value=''><br><br>
+
     <label for="">Description</label><br>
     <textarea type="text" name='description' value=''></textarea><br><br>
+
     <label for="">Price</label><br>
     <input type="text" name='price' placeholder='example: $64.99' value=''><br><br>
 
     <label for="">Product category</label><br>
     <select name="category" id="category">
-        <option value="1">Running Shoes</option>
-        <option value="2">Basketball Shoes</option>
-        <option value="3">Soccer Shoes</option>
-        <option value="4">Skate Shoes</option>
-        <option value="5">Golf Shoes</option>
-        <option value="6">Sneaker Shoes</option>
-        <option value="7">Sandals Shoes</option>
+        <option>Select Category for Product</option>
+        <?php while($row = $categories->fetch(PDO::FETCH_ASSOC)): ?>
+            <option value="<?php echo $row['category_id'] ?>"><?php echo $row['category_name']; ?></option>
+        <?php endwhile ; ?>
     </select><br><br>
-    <label for="">Image Name</label><br>
-    <input type="text" name='image'><br><br>
+
     <!-- file upload needs config -->
-    <label for="">Image Upload</label><br>
-    <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+    <label for="">Product Image Upload</label><br>
+    <input type="file" name="image" id="image"><br><br>
     
 
-    <button name="submit">Create Product</button>
+    <button type='submit' name="submit">Publish Product</button>
 </form>
     
 </body>
