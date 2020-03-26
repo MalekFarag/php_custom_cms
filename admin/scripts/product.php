@@ -4,6 +4,8 @@ function createProd($product){
 
     try{
         $pdo = Database::getInstance()->getConnection();
+            //creating product number
+            $prodNum = random_int(311111111, 399999999);
 
             $image = $product['image'];
             $upload_file = pathinfo($image['name']);
@@ -12,8 +14,7 @@ function createProd($product){
                 throw new Exception('Wrong file type...');
             }
 
-            //creating product number
-            $prodNum = random_int(311111111, 399999999);
+            
 
             $image_path = '../images/shoes/';
             
@@ -65,30 +66,58 @@ function createProd($product){
 
 
 
-function editProduct($id, $name, $price, $description){
+function editProduct($product){
     //TODO: set up database connection
     $pdo = Database::getInstance()->getConnection();
 
-    //TODO: Run the proper SQL query to update tbl_prod with proper values
-    $update_prod_query = 'UPDATE tbl_products SET name = :name, price = :price, description = :description WHERE prod_id = :id';
-    $update_prod_set = $pdo->prepare($update_prod_query);
-    $update_prod_result = $update_prod_set->execute(
-        array(
-            ':name'=>$name,
-            ':price'=>$price,
-            ':description'=>$description,
-            ':id'=>$id
-        )
-    );
+    try{
+        //image upload
+            $image = $product['image'];
+            $upload_file = pathinfo($image['name']);
+            $accepted_types = array('gif', 'jpg', 'jpe', 'png', 'jpeg', 'webp');
+            if(!in_array($upload_file['extension'], $accepted_types)){
+                throw new Exception('Wrong file type...');
+            }
 
+            $image_path = '../images/shoes/';
+            
+            //changing file name
+            $generated_name = md5($upload_file['filename'].time());
+            $generated_filename = $generated_name.'.'.$upload_file['extension'];
+            $targetPath = $image_path.$generated_filename;
 
-    //TODO: if everything goes well, redirect user to index.php
-    // Otherwise, return some error message...
-    if($update_prod_result){
-        redirect_to('index.php');
-    }else{
-        return 'Guess you got canned...';
+            
+            if(!move_uploaded_file($image['tmp_name'], $targetPath)){
+                throw new Exception('failed to move uploaded file, check permissions');
+            }
+
+        //TODO: Run the proper SQL query to update tbl_prod with proper values
+            $update_prod_query = 'UPDATE tbl_products SET name = :name, price = :price, description = :desc, image = :image WHERE prod_id = :id';
+            $update_prod_set = $pdo->prepare($update_prod_query);
+            $update_prod_result = $update_prod_set->execute(
+                array(
+                    ':id'=>$id,
+                    ':image'=> $generated_filename,
+                    ':name'=> $product['name'],
+                    ':desc'=> $product['description'],
+                    ':price'=> $product['price']
+                )
+            );
+
+            //TODO: if everything goes well, redirect user to index.php
+            // Otherwise, return some error message...
+            if($update_prod_result){
+                redirect_to('index.php');
+            }else{
+                return 'Guess you got canned...';
+            }
+
+    }catch(Exeption $e){
+        $error =$e->getMessage();
+        return $error;
     }
+
+    
 }
 
 function deleteProduct($id){

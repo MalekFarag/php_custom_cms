@@ -11,13 +11,19 @@
         $getProd = getSingleProd($tbl, $col, $id);
     }
 
+    
+
     // submitting inputted values
     if(isset($_POST['submit'])){
-        $name = trim($_POST['name']);
-        $price = trim($_POST['price']);
-        $description = trim($_POST['description']);
-
-        $message = editProduct($id, $name, $price, $description);
+        $product = array(
+            'name'=>$_POST['name'],
+            'description'=>$_POST['description'],
+            'price'=>$_POST['price'],
+            'image'=>$_FILES['image']
+        );
+    
+            $result = editProduct($product, $id);
+            $message =  $result;
     }
 ?>
 <!DOCTYPE html>
@@ -32,7 +38,7 @@
 <h1>Edit Product</h1>
 
 <?php echo !empty($message)? $message : '';?>
-    <form action="admin_editproduct.php?id=<?php echo $id ; ?>" method="post">
+    <form action="admin_editproduct.php?id=<?php echo $id ; ?>" method="post" enctype='multipart/form-data'>
         <?php while($info = $getProd->fetch(PDO::FETCH_ASSOC)): ?>
 
             <label>Product Name:</label><br>
@@ -41,9 +47,14 @@
             <label>Price:</label><br>
             <input type="text" name="price" value="<?php echo $info['price'];?>"><br><br>
 
+            <!-- ADD CATEGORY -->
+
             <label>Description:</label><br>
             <textarea type="text" name="description"><?php echo $info['description'];?></textarea> <br><br>
-            <!-- add image? -->
+
+            <label for="">Product Image Upload</label><br>
+            <input type="file" name="image" id="image"><br><br>
+            
         <?php endwhile;?>
         <button type="submit" name="submit">Edit Product</button>
     </form>
