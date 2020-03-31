@@ -29,23 +29,30 @@ if (isset($_GET['filter'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to the SportCheck CMS!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php include 'templates/header.php';?>
 
-    <h1>Welcome to SportCheck CMS</h1>
-
+    <main class='home'>
     <!-- NEED SEARCH BAR -->
-
-    <?php while ($row = $getProds->fetch(PDO::FETCH_ASSOC)): ?>
-        <a href="prodDetails.php?id=<?php echo $row['prod_id']; ?>">
-        <div class="prodItem">
-            <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" />
-            <h5><?php echo $row['price']; ?></h5>
-            <h2><?php echo $row['name']; ?></h2>
+        <div class="prodWrap">
+        <?php while ($row = $getProds->fetch(PDO::FETCH_ASSOC)): ?>
+                <a href="prodDetails.php?id=<?php echo $row['prod_id']; ?>">
+                <div class="prodItem">
+                    <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" />
+                    <h5><?php echo $row['price']; ?></h5>
+                    <h2><?php echo $row['name']; ?></h2>
+                </div>
+                </a>
+            <?php endwhile; ?>
         </div>
-        </a>
-    <?php endwhile; ?>
+    
+    </main>
+
+    
 
     <?php include 'templates/footer.php';?>
 </body>

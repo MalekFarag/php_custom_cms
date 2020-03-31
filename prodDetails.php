@@ -17,21 +17,28 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php include 'templates/header.php';?>
+<?php include 'templates/header.php';?>
+
+<main class="details">
     <?php if (!is_string($getProd)): ?>
         <?php while ($row = $getProd->fetch(PDO::FETCH_ASSOC)): ?>
             <img src="images/shoes/<?php echo $row['image']; ?>" alt="<?php echo $row['name'] ?>" />
 
-            <p>#<?php echo $row['prod_number']; ?></p>
-            <h2>Name: <?php echo $row['name']; ?></h2>
-            <h3><?php echo $row['category']; ?></h3>
+            <p class='num'>#<?php echo $row['prod_number']; ?></p>
+            <h2><?php echo $row['name']; ?></h2>
             <h4><?php echo $row['price']; ?></h4>
-            <p><br> <?php echo $row['description']; ?></p>
+            <p class='desc'> <?php echo $row['description']; ?></p>
         <?php endwhile;?>
     <?php endif;?>
-    <a href="index.php">Back Home...</a>
+
+</main>
+    
+
 
     <?php include 'templates/footer.php';?>
 </body>
