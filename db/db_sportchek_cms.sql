@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `first_name`, `user_name`, `user_email`, `user_password`, `verified`, `user_ip`) VALUES
-(1, 'Malek', 'malek', 'FaragMalek14@gmail.com', 'test', 1, '::1');
+(1, 'Pan', 'pan', 'b_pan2@fanshaweonline.ca', '1a1dc91c907325c69271ddf0c944bc72', 1, '::1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
