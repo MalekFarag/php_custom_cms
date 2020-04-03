@@ -1,0 +1,158 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+header{
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 10px;
+    box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.75);
+    margin-bottom: 20px;
+    img{
+        width: 200px;
+    }
+    .admin{
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 12px;
+    }
+
+    ul{
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+        a{
+            text-decoration: none;
+            color: black;
+            margin: 0 10px;
+            padding-bottom: 1px;
+            border-bottom: solid 2px gray;
+            transition: all .2s ease;
+            &:hover{
+                border-bottom: solid 2px black;
+            }
+        }
+    }
+    h5{
+        font-size: 20px;
+        span{
+            text-decoration: underline;
+        }
+    }
+}
+.userEdit{
+    p{
+        margin: 10px auto;
+        width: 100%;
+        font-size: 12px;
+    }
+}
+main{
+    padding-top: 120px;
+
+    .pageHead{
+        width: 100%;
+        text-align: center;
+        font-size: 22px;
+        margin: 20px 0;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+    }
+
+    .prodWrap{
+        max-width: 1250px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        .prodItem{
+            max-width: 300px;
+            min-height: 300px;
+            padding: 15px;
+            margin: 5px;
+            
+            box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.4);
+
+            transition: all .2s ease;
+            &:hover{
+                box-shadow: 0px 0px 22px -4px rgba(0,0,0,0.3);
+            }
+
+            img{
+                width: 100%;
+            }
+
+            h5{
+                font-size: 20px;
+                margin-bottom:10px;
+            }
+            h2{
+                font-size: 20px;
+            }
+        }
+        .editProduct{
+            a{
+                text-decoration: underline;
+            }
+            .del{
+                color: rgb(223, 25, 25);
+            }
+        }
+    }  
+}
+
+.details{
+    max-width: 1200px;
+    margin: 0 auto;
+
+    img{
+        margin-top: 30px;
+        width: 500px;
+    }
+
+    .num{
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    h2{
+        margin-top: 5px;
+        font-size: 30px;
+    }
+
+    h4{
+        margin-top: 10px;
+        font-size: 36px;
+    }
+    .desc{
+        margin-top: 10px;
+        font-size: 18px;
+        width: 80%;
+        line-height: 20px;
+    }
+}
+
+form{
+    margin: 0 auto;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+
+    input, textarea, select, label{
+        font-family: 'Lato', 'sans-serif';
+        margin-top: 10px;
+        padding: 5px;
+    }
+}
