@@ -1,6 +1,7 @@
 # SportChek Custom CMS
 
 Developper: Malek F
+
 Designer: Nick S
 
 ## How to Start app
