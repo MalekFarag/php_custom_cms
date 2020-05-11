@@ -29,11 +29,11 @@ function createuser($fname, $username, $password, $email){
         $mail->Port = 465;
         $mail->SMTPAuth=true;
 
-        $mail->Username='faragmalek14@gmail.com';
-        $mail->Password='Malooky14'; // please dont steal my password. I really dont want to change it
+        $mail->Username='company@gmail.com';
+        $mail->Password='company'; // please dont steal my password. I really dont want to change it
 
         $mail->addAddress($email);
-        $mail->setFrom('faragmalek14@gmail.com');
+        $mail->setFrom('company@gmail.com');
         
 
         $mail->isHTML(true);
